@@ -8,6 +8,7 @@ let port = normalizePort(process.env.PORT || '3000');
 
 
 app.get('/db/:query', (req, res, next) => {
+    console.log("Query: "+req.params.query)
     let query = new sql.query(req.params.query, (err, result) =>{
         if(err){
             res.sendStatus(400);
