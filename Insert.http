@@ -1,0 +1,8 @@
+GET http://localhost:3000/db/CREATE TABLE Persons (PersonID int, LastName varchar(255), FirstName varchar(255), Address varchar(255),City varchar(255));
+
+###
+GET http://localhost:3000/db/INSERT INTO Persons (PersonID, LastName, FirstName, Address, City) VALUES (99999, 'Testerson', 'Test', '123 Main St', 'Ottawa');
+
+###
+GET http://localhost:3000/db/SELECT * FROM Persons;
+
