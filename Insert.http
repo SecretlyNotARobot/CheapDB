@@ -6,3 +6,7 @@ GET http://localhost:3000/db/INSERT INTO Persons (PersonID, LastName, FirstName,
 ###
 GET http://localhost:3000/db/SELECT * FROM Persons;
 
+###
+GET cheapdb.azurewebsites.net/db/SELECT * FROM Persons;
+
+
