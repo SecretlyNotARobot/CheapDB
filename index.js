@@ -35,7 +35,12 @@ app.get('/db/:query', (req, res, next) => {
             res.sendStatus(400);
         }
         else{
-            res.send(JSON.stringify(result.recordset));
+            if(result.recordset) {
+                res.send(JSON.stringify(result.recordset));
+            }
+            else {
+                res.send("[]", 200);
+            }
         }
         next()
     });

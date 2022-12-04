@@ -4,9 +4,14 @@ GET http://localhost:3000/db/CREATE TABLE Persons (PersonID int, LastName varcha
 GET http://localhost:3000/db/INSERT INTO Persons (PersonID, LastName, FirstName, Address, City) VALUES (99999, 'Testerson', 'Test', '123 Main St', 'Ottawa');
 
 ###
-GET http://localhost:3000/db/SELECT * FROM Persons;
+GET http://localhost:3000/db/SELECT * FROM test;
 
 ###
-GET cheapdb.azurewebsites.net/db/SELECT * FROM Persons;
+GET cheapdb.azurewebsites.net/db/SELECT * FROM test;
 
+###
+GET cheapdb.azurewebsites.net/db/CREATE TABLE test (PatientId varchar(16), Heartrate float(4), Temp float(4), Respiration float(4), Sao2 float(4), BloodPressureS float(4))
 
+###
+
+GET cheapdb.azurewebsites.net/CREATE%20TABLE%20test%20(PatientId%20varchar(16)%2C%20Heartrate%20float(4)%2C%20Temp%20float(4)%2C%20Respiration%20float(4)%2C%20Sao2%20float(4)%2C%20BloodPressureS%20float(4))
