@@ -29,7 +29,7 @@ app.get('/', function (req, res) {
     return res.send("Hello World!");
 })
 app.get('/db/:query', (req, res, next) => {
-    console.log("Query: "+req.params.query)
+    console.log("Query: "+req.params.query);
     let query = new sql.query(req.params.query, (err, result) =>{
         if(err){
             res.status(418).send(err);
@@ -47,7 +47,7 @@ app.get('/db/:query', (req, res, next) => {
 })
 
 app.post("/db/post", (req, res, next) => {
-    console.log("Query: "+req.body)
+    console.log("Query: "+JSON.stringify(req.body));
     let query = new sql.query(req.body.query, (err, result) =>{
         if(err){
             res.status(418).send(err);
