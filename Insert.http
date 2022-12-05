@@ -1,6 +1,13 @@
 GET http://cheapdb.azurewebsites.net/db/create table t(PatientId varchar(16), Heartrate float(4), Temp float(4), Respiration float(4), Sao2 float(4), BloodPressureS float(4))
 
 ###
+POST http://localhost:3000/db/post
+Content-Type: application/json
+
+{
+  "query": "content"
+}
+###
 GET http://localhost:3000/db/INSERT INTO Persons (PersonID, LastName, FirstName, Address, City) VALUES (99999, 'Testerson', 'Test', '123 Main St', 'Ottawa');
 
 ###

@@ -32,32 +32,32 @@ app.get('/db/:query', (req, res, next) => {
     console.log("Query: "+req.params.query)
     let query = new sql.query(req.params.query, (err, result) =>{
         if(err){
-            res.sendStatus(400);
+            res.status(418).send(err);
         }
         else{
             if(result.recordset) {
                 res.send(JSON.stringify(result.recordset));
             }
             else {
-                res.send("[]", 200);
+                res.send("[]");
             }
         }
         next()
     });
 })
 
-app.post(/db/, (req, res, next) => {
+app.post("/db/post", (req, res, next) => {
     console.log("Query: "+req.body)
-    let query = new sql.query(req.body, (err, result) =>{
+    let query = new sql.query(req.body.query, (err, result) =>{
         if(err){
-            res.sendStatus(400);
+            res.status(418).send(err);
         }
         else{
             if(result.recordset) {
                 res.send(JSON.stringify(result.recordset));
             }
             else {
-                res.send("[]", 200);
+                res.send("[]");
             }
         }
         next()
