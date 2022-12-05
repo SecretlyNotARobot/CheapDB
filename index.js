@@ -46,6 +46,24 @@ app.get('/db/:query', (req, res, next) => {
     });
 })
 
+app.post(/db/, (req, res, next) => {
+    console.log("Query: "+req.body)
+    let query = new sql.query(req.body, (err, result) =>{
+        if(err){
+            res.sendStatus(400);
+        }
+        else{
+            if(result.recordset) {
+                res.send(JSON.stringify(result.recordset));
+            }
+            else {
+                res.send("[]", 200);
+            }
+        }
+        next()
+    });
+})
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
