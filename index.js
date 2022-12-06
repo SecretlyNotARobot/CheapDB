@@ -17,8 +17,9 @@ const apiPrefix = '/api';
 
 // Create the Express app & setup middlewares
 const app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json({strict: false, verify:(res, req, buf, enc)=>{console.log(buf.toString());}}));
+//app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.json({strict: false, verify:(res, req, buf, enc)=>{console.log(buf.toString());}}));
+app.use(express.text())
 app.use(cors({ origin: /http:\/\/(127(\.\d){3}|localhost)/}));
 app.options('*', cors());
 
@@ -48,7 +49,7 @@ app.get('/db/:query', (req, res, next) => {
 
 app.post("/db/post", (req, res, next) => {
     console.log("Query: "+JSON.stringify(req.body));
-    let query = new sql.query(req.body.query, (err, result) =>{
+    let query = new sql.query(req.body, (err, result) =>{
         if(err){
             res.status(418).send(err);
         }
@@ -65,7 +66,7 @@ app.post("/db/post", (req, res, next) => {
 })
 
 // Start the server
-app.listen(port, "0.0.0.0",  () => {
+app.listen(port,  () => {
     console.log(`Server listening on port ${port}`);
     sql.connect(process.env.CONNECTION_STRING).then(()=>console.log("Successuflly connected to DB "), (err)=>console.log(err));
 });
